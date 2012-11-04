@@ -1,7 +1,7 @@
 #### Contents of the preconfiguration file (for lenny)
 ### Localization
 # Locale sets language and country.
-d-i debian-installer/locale string en_US
+d-i debian-installer/locale string en_AU
 
 # Keyboard selection.
 #d-i console-tools/archs select at
@@ -66,8 +66,8 @@ d-i netcfg/wireless_wep string
 # If you select ftp, the mirror/country string does not need to be set.
 #d-i mirror/protocol string ftp
 d-i mirror/country string manual
-d-i mirror/http/hostname string http.us.debian.org
-d-i mirror/http/directory string /debian
+d-i mirror/http/hostname string mirror.internode.on.net
+d-i mirror/http/directory string /pub/debian
 d-i mirror/http/proxy string
 
 # Suite to install.
@@ -81,12 +81,12 @@ d-i clock-setup/utc boolean true
 
 # You may set this to any valid setting for $TZ; see the contents of
 # /usr/share/zoneinfo/ for valid values.
-d-i time/zone string US/Eastern
+d-i time/zone string Australia/Melbourne
 
 # Controls whether to use NTP to set the clock during the install
 d-i clock-setup/ntp boolean true
 # NTP server to use. The default is almost always fine here.
-#d-i clock-setup/ntp-server string ntp.example.com
+d-i clock-setup/ntp-server string 0.au.pool.ntp.org
 
 ### Partitioning
 # If the system has free space you can choose to only partition that space.
@@ -186,8 +186,8 @@ d-i partman/confirm boolean true
 
 ### Apt setup
 # You can choose to install non-free and contrib software.
-#d-i apt-setup/non-free boolean true
-#d-i apt-setup/contrib boolean true
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
 # Uncomment this if you don't want to use a network mirror.
 #d-i apt-setup/use_mirror boolean false
 # Select which update services to use; define the mirrors to be used.
@@ -306,5 +306,5 @@ d-i finish-install/reboot_in_progress note
 # still a usable /target directory. You can chroot to /target and use it
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
-#d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
+d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
 
